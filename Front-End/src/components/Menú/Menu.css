@@ -1,0 +1,14 @@
+body{
+    background-image: url(/src/assets/fondofuturista.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+legend.text-center.header{
+    color: white !important;
+}
+
+label{
+    color: white;
+}
