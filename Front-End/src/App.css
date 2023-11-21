@@ -147,11 +147,15 @@ body {
   
 div.bg.order-1.order-md-2{
     display: block;
-    padding: auto;    
-    background-image: url(./assets/logo_restaurante.jpg);        
+    padding: auto; 
+    /*background-image: url(./assets/logo_restaurante.jpg);*/
     background-size: cover;
-    background-position: center; 
-}
+    background-position: center;
+    background-image: url(/src/assets/logo_restaurante.jpg); 
+} 
+
+
+
 
 .userps{
   color: black;

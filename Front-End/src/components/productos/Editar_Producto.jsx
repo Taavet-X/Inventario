@@ -38,7 +38,7 @@ function Editar_Producto() {
         try{
             const data = await updateProducto(id_producto, producto);
             Swal.fire({
-                    title: 'Plato De Comida Registrado Exitosamente',
+                    title: 'Plato De Comida Actualizado Exitosamente',
                     icon: 'success',
             }).then(()=>{
                 navigate("/platos_menu")

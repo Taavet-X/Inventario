@@ -1,7 +1,8 @@
-import React, {useEffect,useState} from 'react'
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import { getMesas, deleteMesa } from "../mesas/mesas.service";
 import Swal from 'sweetalert2';
+import Navbar from '../../navbar';
 
 function Mesas() {
 
@@ -50,6 +51,7 @@ function Mesas() {
 
 
   return (
+    <Navbar>
     <div  className="animate__animated animate__fadeIn animate">
          {/* <!-- Header--> */}
       <header className="bg-dark py-5">
@@ -82,8 +84,9 @@ function Mesas() {
             <tbody>
             {mesas.map((mesa) => (
           <tr key={mesa.id_mesa}>
-           <td>{mesa.capacidad}</td>
             <td>{mesa.numero_mesa}</td>
+           <td>{mesa.capacidad}</td>
+            
             <td>
               <div className="botones">
                 <button
@@ -139,6 +142,7 @@ function Mesas() {
         </div>
       </footer>
     </div>
+    </Navbar>
   )
 }
 

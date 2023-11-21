@@ -2,6 +2,7 @@ import React, {useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
 import {getReservasMesas, updateEstadoReservasMesas} from './registrar_reservas.service'
 import Swal from 'sweetalert2';
+import Navbar from '../../navbar';
 
 
 function Reservas() {
@@ -60,6 +61,7 @@ function Reservas() {
 
 
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
         {/* <!-- Header--> */}
        <header className="bg-dark py-5">
@@ -114,7 +116,7 @@ function Reservas() {
 
     <Link to="/registrar_reservas">
       <button type="button" className="btn btn-primary btn-lg d-flex justify-content-start">
-        Registrar
+        Registrar Reserva
       </button>{" "}
     </Link>
 
@@ -136,6 +138,7 @@ function Reservas() {
         </div>
       </footer>
     </div>
+    </Navbar>
   )
 }
 

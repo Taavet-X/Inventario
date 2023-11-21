@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import "./Editar_Insumo.css"
-import { useState } from 'react'
 import { useSearchParams } from "react-router-dom"
 import { getInsumoById, updateInsumo } from './insumos.service'
 import { Link } from 'react-router-dom'

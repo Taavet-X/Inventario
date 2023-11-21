@@ -6,6 +6,7 @@ import Navbar from "../../navbar";
 
 function Productos_Insumos(props) {
   const [insumos, setInsumos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     getInsumos().then((insumos) => setInsumos(insumos));
@@ -47,6 +48,27 @@ function Productos_Insumos(props) {
     });
   };
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+  
+    // Actualizar el término de búsqueda
+    setSearchTerm(searchTerm);
+  
+    // Si el término de búsqueda está vacío, restaura la lista completa de productos
+    if (searchTerm === '') {
+      getInsumos().then((insumos) => setInsumos(insumos));
+    } else {
+      // Filtrar productos por nombre_producto que coincida con el término de búsqueda letra por letra
+      const filteredInsumos = insumos.filter(insumo => {
+        const nombreInsumo = insumo.nombre_insumo.toLowerCase();
+        return nombreInsumo.includes(searchTerm) || searchTerm.split('').every(char => nombreInsumo.includes(char));
+      });
+  
+      setInsumos(filteredInsumos);
+    }
+  };
+
+
   return (
     <Navbar>
     <div className="animate__animated animate__fadeIn animate">
@@ -64,6 +86,14 @@ function Productos_Insumos(props) {
 
       <div class="container mt-5" style={{ marginTop: "30px" }}>
         <div class="table table-responsive border-dark ">
+        <input style={{width:"50%"}} 
+              type="text"
+              className="form-control mb-3"
+              id="search"
+              placeholder="Filtrar Nombre del Insumo..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
           <table class="table table-bordered table-hover text-center border border-4 ">
             <thead class="table-light">
               <tr>

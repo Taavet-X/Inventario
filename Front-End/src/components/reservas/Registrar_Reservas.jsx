@@ -5,6 +5,7 @@ import { getMesas } from '../mesas/mesas.service'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import { format } from 'date-fns';
+import Navbar from '../../navbar'
 
 function Registrar_Reservas() {
 
@@ -55,6 +56,7 @@ function Registrar_Reservas() {
     }
 
   return (
+    <Navbar>
     <div className= "animate__animated animate__fadeIn animate">
         {/* <!-- Header--> */}
     <header class="bg-dark py-5">
@@ -212,6 +214,7 @@ function Registrar_Reservas() {
    </footer>
 
     </div>
+    </Navbar>
   )
 }
 

@@ -22,6 +22,7 @@ import Registrar_Devoluciones from "./components/devoluciones/Registrar_Devoluci
 import Seccion_Devoluciones from "./components/devoluciones/Seccion_Devoluciones.jsx";
 import Mesas from "./components/mesas/Mesas.jsx";
 import Registrar_Mesa from "./components/mesas/Registrar_Mesa.jsx";
+import Editar_Mesa from "./components/mesas/Editar_Mesa.jsx";
 import Registrar_Reservas from "./components/reservas/Registrar_Reservas.jsx";
 
 
@@ -122,6 +123,11 @@ const router = createBrowserRouter([
   {
     path: "registrar_mesa",
     element: <Registrar_Mesa/>,
+  },
+
+  {
+    path: "editar_mesa",
+    element: <Editar_Mesa/>,
   },
 
   {

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { postProveedor } from './proveedores.services'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import Navbar from '../../navbar'
 
 function Registrar_Proveedor() {
 
@@ -38,6 +39,7 @@ function Registrar_Proveedor() {
     
 
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
     <header class="bg-dark py-5">
@@ -140,6 +142,7 @@ function Registrar_Proveedor() {
 
 
 </div>
+</Navbar>
   )
 }
 

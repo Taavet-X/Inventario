@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom"
 import { getProveedorById, updateProveedor } from './proveedores.services'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2';
+import Navbar from '../../navbar'
 
 function Editar_Proveedor() {
 
@@ -26,6 +27,7 @@ function Editar_Proveedor() {
         })
     },[])    
 
+    
     function handleClick (){
         const proveedor = JSON.stringify({ 
             id_proveedor:id_proveedor,
@@ -53,34 +55,35 @@ function Editar_Proveedor() {
 
 
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
-    <header class="bg-dark py-5">
-       <div class="container px-4 px-lg-5 my-5">
-           <div class="text-center text-white">
-               <h1 class="display-4 fw-bolder">Editar Proveedor</h1>
-               <p class="lead fw-normal text-white-50 mb-0">Edita y Actualiza los datos del Proveedor Atráves del formulario</p>
+    <header className="bg-dark py-5">
+       <div className="container px-4 px-lg-5 my-5">
+           <div className="text-center text-white">
+               <h1 className="display-4 fw-bolder">Editar Proveedor</h1>
+               <p className="lead fw-normal text-white-50 mb-0">Edita y Actualiza los datos del Proveedor Atráves del formulario</p>
            </div>
        </div>
    </header>
 
    {/* <!-- Formulario--> */}
 
-   <div class="container">
-<div class="row">
-   <div class="col-md-12">
-       <div class="well well-sm">
-           <form class="form-horizontal" method="post">
+   <div className="container">
+<div className="row">
+   <div className="col-md-12">
+       <div className="well well-sm">
+           <form className="form-horizontal" method="post">
                <fieldset>
-                   <legend class="text-center header" style={{position:'relative',left:'0px'}}>Editar Proveedor</legend>
+                   <legend className="text-center header" style={{position:'relative',left:'0px'}}>Editar Proveedor</legend>
                    
                    <div className='formulario'>
 
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                       <div class="col-md-8">
+                   <div className="form-group">
+                       <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-user bigicon"></i></span>
+                       <div className="col-md-8">
                        <label htmlFor="name">NIT</label>
-                           <input id="lname" name="name" type="text" placeholder="NIT   " class="form-control"
+                           <input id="lname" name="name" type="text" placeholder="NIT   " className="form-control"
                            value={NIT}
                            onChange={(e)=>{
                                     setNIT(e.target.value)
@@ -88,11 +91,11 @@ function Editar_Proveedor() {
                        </div>
                    </div>
 
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                       <div class="col-md-8">
+                   <div className="form-group">
+                       <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-user bigicon"></i></span>
+                       <div className="col-md-8">
                        <label htmlFor="name">Nombre del Proveedor</label>
-                           <input id="fname" name="name" type="text" placeholder="Nombre del Proveedor" class="form-control"
+                           <input id="fname" name="name" type="text" placeholder="Nombre del Proveedor" className="form-control"
                            value={nombre_proveedor}
                            onChange={(e)=>{
                                     setNombreProveedor(e.target.value)
@@ -101,11 +104,11 @@ function Editar_Proveedor() {
                    </div>
                   
 
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                       <div class="col-md-8">
+                   <div className="form-group">
+                       <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-envelope-o bigicon"></i></span>
+                       <div className="col-md-8">
                        <label htmlFor="name">Celular</label>
-                           <input id="email" name="email" type="text" placeholder="Celular" class="form-control"
+                           <input id="email" name="email" type="text" placeholder="Celular" className="form-control"
                            value={celular}
                            onChange={(e)=>{
                                     setCelular(e.target.value)
@@ -113,11 +116,11 @@ function Editar_Proveedor() {
                        </div>
                    </div>
 
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                       <div class="col-md-8">
+                   <div className="form-group">
+                       <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-envelope-o bigicon"></i></span>
+                       <div className="col-md-8">
                         <label htmlFor="name">Dirección</label>
-                           <input id="direccion" name="direccion" type="text" placeholder="Dirección" class="form-control"
+                           <input id="direccion" name="direccion" type="text" placeholder="Dirección" className="form-control"
                             value={direccion}
                             onChange={(e)=>{
                                      setDireccion(e.target.value)
@@ -136,9 +139,9 @@ function Editar_Proveedor() {
                             </div>
                      </div>
 
-                     <div class="form-group">
-                            <div class="col-md-12 text-center">
-                              <Link to = '/proveedores'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                     <div className="form-group">
+                            <div className="col-md-12 text-center">
+                              <Link to = '/proveedores'> <button type="submit" className="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 
@@ -153,12 +156,13 @@ function Editar_Proveedor() {
 </div>
 </div>
 {/* <!-- Footer--> */}
-<footer class="py-5 bg-dark">
-       <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
+<footer className="py-5 bg-dark">
+       <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
    </footer>
 
 
 </div>
+</Navbar>
   )
 }
 

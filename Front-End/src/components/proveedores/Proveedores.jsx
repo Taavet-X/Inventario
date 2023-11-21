@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProveedor, deleteProveedor } from "./proveedores.services";
 import Swal from "sweetalert2";
+import Navbar from "../../navbar";
 
 function Proveedores(props) {
   const [proveedores, setProveedores] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     getProveedor().then((proveedores) => setProveedores(proveedores));
@@ -49,7 +51,29 @@ function Proveedores(props) {
     });
   };
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+
+    // Actualizar el término de búsqueda
+    setSearchTerm(searchTerm);
+
+    // Si el término de búsqueda está vacío, restaura la lista completa de proveedores
+    if (searchTerm === '') {
+      getProveedor ().then((proveedores) => setProveedores(proveedores));
+    } else {
+      // Filtrar proveedores por nombre_proveedor que coincida con el término de búsqueda letra por letra
+      const filteredProveedores = proveedores.filter(proveedor => {
+        const nombreProveedor = proveedor.nombre_proveedor.toLowerCase();
+        return nombreProveedor.includes(searchTerm) || searchTerm.split('').every(char => nombreProveedor.includes(char));
+      });
+
+      setProveedores(filteredProveedores);
+    }
+  };
+
+
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
       {/* <!-- Header--> */}
       <header className="bg-dark py-5">
@@ -65,6 +89,14 @@ function Proveedores(props) {
 
       <div class="container mt-5" style={{ marginTop: "30px" }}>
         <div class="table table-responsive border-dark ">
+        <input style={{width:"50%"}} 
+              type="text"
+              className="form-control mb-3"
+              id="search"
+              placeholder="Filtrar Nombre de Proveedor..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
           <table class="table table-bordered table-hover text-center border border-4 ">
             <thead class="table-light">
               <tr>
@@ -144,6 +176,7 @@ function Proveedores(props) {
         </div>
       </footer>
     </div>
+    </Navbar>
   );
 }
 

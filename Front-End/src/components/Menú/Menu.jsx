@@ -272,9 +272,12 @@ function Menu() {
             </div>
         </section>
         {/* <!-- Footer--> */}
-        <footer className="py-5 bg-dark">
-            <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
+        <footer className="py-5 bg-dark mt-4">
+            <div className="container">
+                <p className="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p>
+            </div>
         </footer>
+
         
     </div>
     </Navbar>
