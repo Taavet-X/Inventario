@@ -68,8 +68,12 @@ let con = mysql.createConnection({
       let sql = "UPDATE insumos SET nombre_insumo = ?, cantidad = ?, fecha_caducidad = ? WHERE id_insumos = ?; ";
       let values = [nombre_insumo, cantidad,fecha_caducidad, req.params.id_insumos]      
       con.query(sql, values, function (err, result) {
-        if (err) throw err;
-        res.json("Number of records updated: " + result.affectedRows)        
+        if (err){
+          console.log(err)
+          res.status(500).json(err)
+        } else{
+          res.json("Number of records updated: " + result.affectedRows)        
+        }        
       });
     });        
   })
