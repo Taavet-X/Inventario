@@ -10,16 +10,11 @@ import Navbar from '../../navbar'
 
 function Registrar_Insumo() {
 
-    const [nombre_insumo, setNombreInsumo]  = useState ('')
-    const [cantidad, setCantidad] = useState ('')
-    const [fecha_caducidad, setFechaCaducidad]  = useState ('')
+    const [nombre_insumo, setNombreInsumo]  = useState ('') 
 
     function handleClick (){
         const insumo = JSON.stringify({ 
-            nombre_insumo: nombre_insumo,
-            cantidad: cantidad,
-            fecha_caducidad: fecha_caducidad
-
+            nombre_insumo: nombre_insumo
         })
         postInsumo(insumo)
         .then((res) =>{
@@ -39,54 +34,43 @@ function Registrar_Insumo() {
     <Navbar>
     <div className="animate__animated animate__fadeIn animate">
     {/* <!-- Header--> */}
-    <header class="bg-dark py-5">
-       <div class="container px-4 px-lg-5 my-5">
-           <div class="text-center text-white">
-               <h1 class="display-4 fw-bolder">Registrar Insumo</h1>
-               <p class="lead fw-normal text-white-50 mb-0">Registra el Insumo Atráves del formulario</p>
+    <header className="bg-dark py-5">
+       <div className="container px-4 px-lg-5 my-5">
+           <div className="text-center text-white">
+               <h1 className="display-4 fw-bolder">Registrar Insumo</h1>
+               <p className="lead fw-normal text-white-50 mb-0">Registra el Insumo Atráves del formulario</p>
            </div>
        </div>
    </header>
 
    {/* <!-- Formulario--> */}
 
-   <div class="container">
-<div class="row">
-   <div class="col-md-12">
-       <div class="well well-sm">
-           <form class="form-horizontal" method="post">
+   <div className="container">
+<div className="row">
+   <div className="col-md-12">
+       <div className="well well-sm">
+           <form className="form-horizontal" method="post">
                <fieldset>
-                   <legend class="text-center header"style={{position:'relative',left:'0px'}}>Registrar Insumo</legend>
+                   <legend className="text-center header"style={{position:'relative',left:'0px'}}>Registrar Insumo</legend>
                    
                    <div className='formulario'>
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                       <div class="col-md-8">
+                   <div className="form-group">
+                       <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-user bigicon"></i></span>
+                       <div className="col-md-8">
                        <label htmlFor="name">Nombre del Insumo</label>
-                           <input id="fname" name="name" type="text" placeholder="Nombre del Insumo" class="form-control"
+                           <input id="fname" name="name" type="text" placeholder="Nombre del Insumo" className="form-control"
                            onChange={(e)=>{
                                     setNombreInsumo(e.target.value)
                                 }}/>
                        </div>
-                   </div>
-                
+                   </div>        
 
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                       <div class="col-md-8">
-                       <label htmlFor="name">Cantidad del Insumo</label>
-                           <input id="email" name="email" type="text" placeholder="Cantidad" class="form-control"
-                            onChange={(e)=>{
-                                setCantidad(e.target.value)
-                            }}/>
-                       </div>
-                   </div>
 
-                <div class="form-group">
-                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                    <div class="col-md-8">
+                {/* <div className="form-group">
+                    <span className="col-md-1 col-md-offset-2 text-center"><i className="fa fa-envelope-o bigicon"></i></span>
+                    <div className="col-md-8">
                         <label htmlFor="unidadMedida">Unidad De Medida Del Insumo</label>
-                        <select id="unidadMedida" name="unidadMedida" class="form-control">
+                        <select id="unidadMedida" name="unidadMedida" className="form-control">
                             
                             <option value="libras">Libra(s)</option>
                             <option value="unidades">Gramos (Grs)</option>
@@ -100,23 +84,11 @@ function Registrar_Insumo() {
                             <option value="unidades">Centímetros(Cms)</option>
                         </select>
                     </div>
-                </div>
+                </div> */}
 
-
-                   <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                       <div class="col-md-8">
-                        <label htmlFor="name">Fecha de Caducidad del Insumo</label>
-                           <input id="email" name="email" type="date" placeholder="Fecha de Caducidad" class="form-control"
-                           onChange={(e)=>{
-                            setFechaCaducidad(e.target.value)
-                        }}/>
-                       </div>
-                   </div>
-
-                   <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg1" onClick={(e) =>{
+                   <div className="form-group">
+                            <div className="col-md-12 text-center">
+                                <button type="submit" className="btn btn-primary btn-lg1" onClick={(e) =>{
                                     e.preventDefault()
                                     handleClick()
                                 }}>Registrar</button>
@@ -124,9 +96,9 @@ function Registrar_Insumo() {
                         </div>
 
 
-                   <div class="form-group">
-                            <div class="col-md-12 text-center">
-                              <Link to = '/productos_insumos'> <button type="submit" class="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
+                   <div className="form-group">
+                            <div className="col-md-12 text-center">
+                              <Link to = '/productos_insumos'> <button type="submit" className="btn btn-primary btn-lg1">Ir Atrás</button></Link> 
                             </div>
                         </div>
 
@@ -140,8 +112,8 @@ function Registrar_Insumo() {
 </div>
 </div>
 {/* <!-- Footer--> */}
-<footer class="py-5 bg-dark">
-       <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
+<footer className="py-5 bg-dark">
+       <div className="container"><p className="m-0 text-center text-white">Copyright &copy; Restaurante Oh La Lá</p></div>
    </footer>
 
 

@@ -12,18 +12,12 @@ let con = mysql.createConnection({
   //CREATE Enviar nueva Información
   router.post('/', (req, res) => {   
       
-      const nombre_insumo = req.body['nombre_insumo']
-      // const cantidad = req.body['cantidad']
-      let fecha_caducidad = req.body['fecha_caducidad']
-      if (fecha_caducidad == "") {
-        fecha_caducidad = null
-      }
-      console.log(fecha_caducidad);
+      const nombre_insumo = req.body['nombre_insumo']    
       con.connect(function(err) {
         if (err) res.json("error");
-        let sql = "INSERT INTO insumos (nombre_insumo,fecha_caducidad) VALUES (?);";
+        let sql = "INSERT INTO insumos (nombre_insumo) VALUES (?);";
         let values = [
-          [nombre_insumo,fecha_caducidad]
+          [nombre_insumo]
         ]
         con.query(sql, values, function (err, result) {
           if (err) throw err;
@@ -36,7 +30,7 @@ let con = mysql.createConnection({
   router.get('/', (req, res) => {
     con.connect(function(err) {
       if (err) throw err;    
-      let sql = "SELECT id_insumos,nombre_insumo,DATE_FORMAT(fecha_caducidad,'%Y-%m-%d') AS fecha_caducidad FROM insumos";
+      let sql = "SELECT id_insumos, nombre_insumo FROM insumos";
       con.query(sql, function (err, result) {
         if (err) throw err;
         res.json(result) 
@@ -61,12 +55,10 @@ let con = mysql.createConnection({
   //UPDATE actualizar información que ya existe
   router.put('/:id_insumos', (req, res) => {  
     const nombre_insumo = req.body['nombre_insumo']
-    const cantidad = req.body['cantidad']
-    const fecha_caducidad = req.body['fecha_caducidad']
     con.connect(function(err) {
       if (err) throw err;
-      let sql = "UPDATE insumos SET nombre_insumo = ?, cantidad = ?, fecha_caducidad = ? WHERE id_insumos = ?; ";
-      let values = [nombre_insumo, cantidad,fecha_caducidad, req.params.id_insumos]      
+      let sql = "UPDATE insumos SET nombre_insumo = ? WHERE id_insumos = ?; ";
+      let values = [nombre_insumo, req.params.id_insumos]      
       con.query(sql, values, function (err, result) {
         if (err){
           console.log(err)

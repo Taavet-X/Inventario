@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getInsumos, deleteInsumo } from "./insumos.service";
 import Swal from "sweetalert2";
 import Navbar from "../../navbar";
-
+  
 function Productos_Insumos(props) {
   const [insumos, setInsumos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,8 +84,8 @@ function Productos_Insumos(props) {
         </div>
       </header>
 
-      <div class="container mt-5" style={{ marginTop: "30px" }}>
-        <div class="table table-responsive border-dark ">
+      <div className="container mt-5" style={{ marginTop: "30px" }}>
+        <div className="table table-responsive border-dark ">
         <input style={{width:"50%"}} 
               type="text"
               className="form-control mb-3"
@@ -94,18 +94,16 @@ function Productos_Insumos(props) {
               value={searchTerm}
               onChange={handleSearch}
             />
-          <table class="table table-bordered table-hover text-center border border-4 ">
-            <thead class="table-light">
+          <table className="table table-bordered table-hover text-center border border-4 ">
+            <thead className="table-light">
               <tr>
                 <th colSpan="6">
-                  <h2 class="text-start ">Insumos</h2>
+                  <h2 className="text-start ">Insumos</h2>
                 </th>
               </tr>
               <tr>
                 <th>ID del Insumo</th>
                 <th>Nombre del Insumo</th>
-                <th>Cantidad</th>
-                <th>Fecha de Caducidad del Insumo</th>
                 <th style={{ width: "160px" }}>Opciones</th>
               </tr>
             </thead>
@@ -114,8 +112,6 @@ function Productos_Insumos(props) {
                 <tr key={insumo.id_insumos}>
                   <td>{insumo.id_insumos}</td>
                   <td>{insumo.nombre_insumo}</td>
-                  <td>{insumo.cantidad}</td>
-                  <td>{insumo.fecha_caducidad}</td>
                   <td className="td-botones">
                     <div className="botones">
                       <button

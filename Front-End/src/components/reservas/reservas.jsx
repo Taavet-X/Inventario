@@ -18,10 +18,10 @@ function Reservas() {
   
   const handleClickEstado = (id_reservas_mesas, estadoActual) => {
     const estados = {
-      1: 'Pendiente',
-      2: 'Realizado',
-      3: 'Finalizada',
-      4: 'Cancelado',
+      'Pendiente': 'Pendiente',
+      'Realizado': 'Realizado',
+      'Finalizada': 'Finalizada',
+      'Cancelado': 'Cancelado',
     };
   
     Swal.fire({

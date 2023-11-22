@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
   // Muestra la hora actual más 2 horas
   con.connect(function(err) {
     if (err) throw err;
-    var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+    var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion  JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
     var values = [numero_mesa,horamenos.format('YYYY-MM-DD HH:mm:ss'),horaactual.format('YYYY-MM-DD HH:mm:ss')]
     console.log(values)
     con.query(sql, values, function (err, result) {            
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
         }else{
           con.connect(function(err) {
             if (err) throw err;
-            var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+            var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
             var values = [numero_mesa,horaactual.format('YYYY-MM-DD HH:mm:ss'),horamas.format('YYYY-MM-DD HH:mm:ss')]
             con.query(sql, values, function (err, result) {
               if (err) throw err;
@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
                     ]
                     con.query(sql, values, function (err, result) {
                       if (err) throw err;
-                      var sql = "INSERT INTO reserva (hora_reserva,id_mesa,id_estado,identificacion) VALUES (?);";
+                      var sql = "INSERT INTO reserva (hora_reserva,id_mesa,estado,identificacion) VALUES (?);";
                       var values = [
                       [hora_reserva,numero_mesa, 1 /* estado 1 es pendiente creado en la bd*/,identificacion]
                     ]
@@ -93,7 +93,7 @@ router.get('/', (req, res) => {
   
   con.connect(function(err) {
     if (err) throw err;    
-    var sql = "SELECT reserva.id_reserva, cliente.identificacion AS identificacion, cliente.nombre_cliente AS nombre_cliente, cliente.celular AS celular, mesa.numero_mesa AS numero_mesa, DATE_FORMAT(reserva.hora_reserva,'%m/%d/%Y %h:%i %p') AS hora_reserva, estado.descripcion AS estado  FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa";
+    var sql = "SELECT reserva.id_reserva, cliente.identificacion AS identificacion, cliente.nombre_cliente AS nombre_cliente, cliente.celular AS celular, mesa.numero_mesa AS numero_mesa, DATE_FORMAT(reserva.hora_reserva,'%m/%d/%Y %h:%i %p') AS hora_reserva, estado  FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN mesa ON mesa.id_mesa = reserva.id_mesa";
     con.query(sql, function (err, result) {
       if (err) throw err;
       res.json(result)        
@@ -105,11 +105,11 @@ router.get('/', (req, res) => {
 router.get('/:id_reserva', (req, res) => {
   con.connect(function(err) {
     if (err) throw err;
-    var sql = "SELECT reserva.id_reserva, cliente.identificacion AS identificacion, cliente.nombre_cliente AS nombre_cliente, cliente.celular AS celular, mesa.numero_mesa AS numero_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva, estado.descripcion AS estado  FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN estado ON estado.id_estado = reserva.id_estado JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE id_reserva = ?;";   
+    var sql = "SELECT reserva.id_reserva, cliente.identificacion AS identificacion, cliente.nombre_cliente AS nombre_cliente, cliente.celular AS celular, mesa.numero_mesa AS numero_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva, estado  FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE id_reserva = ?;";   
     var values = [req.params.id_reserva]
     con.query(sql, values, function (err, result) {
       if (err) throw err;
-      res.json(result)        
+      res.json(result)         
     });
   });   
 })
@@ -126,7 +126,7 @@ router.put('/:id_reserva', (req, res) => {
     const estado = req.body['estado']
   con.connect(function(err) {
     if (err) throw err;
-    var sql = "UPDATE reserva SET nombre_cliente = ?, tipo_identificacion = ?, identificacion = ?,celular = ? ,correo = ?, numero_mesa = ?, hora_reserva = ?, id_estado = ? WHERE id_reserva = ?; ";
+    var sql = "UPDATE reserva SET nombre_cliente = ?, tipo_identificacion = ?, identificacion = ?,celular = ? ,correo = ?, numero_mesa = ?, hora_reserva = ?, estado = ? WHERE id_reserva = ?; ";
     var values = [nombre_cliente, tipo_identificacion,identificacion,celular,correo,numero_mesa,hora_reserva,estado, req.params.id_reserva]      
     con.query(sql, values, function (err, result) {
       if (err) throw err;
@@ -137,12 +137,12 @@ router.put('/:id_reserva', (req, res) => {
 
 //UPDATE actualizar estado
 router.put('/estado/:id_reserva', (req, res) => {  
-  const id_estado = req.body['id_estado']
+  const estado = req.body['estado']
   console.log(req.body)
   con.connect(function(err) {
     if (err) throw err;
-    var sql = "UPDATE reserva SET id_estado = ? WHERE id_reserva = ?; ";
-    var values = [id_estado, req.params.id_reserva]      
+    var sql = "UPDATE reserva SET estado = ? WHERE id_reserva = ?; ";
+    var values = [estado, req.params.id_reserva]      
     con.query(sql, values, function (err, result) {
       if (err) throw err;
       res.json("Number of records updated: " + result.affectedRows)        

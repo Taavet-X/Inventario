@@ -61,14 +61,14 @@ export async function updateReservasMesas(id_reservas_mesas, reservas_mesas){
     return data
 }
 
-export async function updateEstadoReservasMesas(id_reservas_mesas, id_estado){
+export async function updateEstadoReservasMesas(id_reservas_mesas, estado){
     console.log(id_reservas_mesas)
     const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 
         Authorization: 'Bearer '+localStorage.getItem("token")
     },
-        body: JSON.stringify({id_estado: id_estado})
+        body: JSON.stringify({estado: estado})
     };    
     const response = await fetch('http://127.0.0.1:3000/reservas_mesas/estado/'+id_reservas_mesas, requestOptions)
     const data = await response.json();
