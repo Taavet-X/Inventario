@@ -19,12 +19,6 @@ function Pedidos() {
         </div>
       </header>
 
-      <div class="form-group">
-        <div class="col-md-12 text-center">
-          
-        </div>
-      </div>
-
       <div class="container mt-5" style={{ marginTop: "30px" }}>
         <div class="table table-responsive border-dark ">
           <table class="table table-bordered table-hover text-center border border-4 ">
@@ -38,8 +32,6 @@ function Pedidos() {
                 {/* <th>ID Del Proveedor</th> */}
                 <th># Del Pedido</th>
                 <th>Nombre De La Persona Del Pedido</th>
-                <th>Dirección</th>
-                <th>Celular</th>
                 <th>Pedido</th>
                 <th>Precio Total Del Pedido</th> 
                 <th>Número de Mesa</th> 
@@ -53,6 +45,43 @@ function Pedidos() {
           <Link to="/registrar_pedidos">
       <button type="button" className="btn btn-primary btn-lg d-flex justify-content-start">
         Registrar Pedido
+      </button>{" "}
+    </Link>
+
+          
+        </div>
+      </div>
+
+      {/* Tabla de Domicilios*/}
+
+      <div class="container mt-5" style={{ marginTop: "30px" }}>
+        <div class="table table-responsive border-dark ">
+          <table class="table table-bordered table-hover text-center border border-4 ">
+            <thead class="table-light">
+              <tr>
+                <th colSpan="9">
+                  <h2 class="text-start ">Domicilios</h2>
+                </th>
+              </tr>
+              <tr>
+                {/* <th>ID Del Proveedor</th> */}
+                <th># Del Pedido</th>
+                <th>N° De Identificación</th>
+                <th>Nombre De La Persona Del Domicilio</th>
+                <th>Dirección</th>
+                <th>Celular</th>
+                <th>Pedido</th>
+                <th>Precio Total Del Pedido</th> 
+                <th>Estado Del Pedido</th> 
+                <th style={{ width: "160px" }}>Opciones</th>
+              </tr>
+            </thead>
+              
+          </table>
+
+          <Link to="/registrar_domicilios">
+      <button type="button" className="btn btn-primary btn-lg d-flex justify-content-start">
+        Registrar Domicilio
       </button>{" "}
     </Link>
 
@@ -70,6 +99,7 @@ function Pedidos() {
 
 
 
+
       {/* <!-- Footer--> */}
       <footer className="py-5 bg-dark">
         <div className="container">
@@ -80,7 +110,7 @@ function Pedidos() {
       </footer>
     </div>
     </Navbar>
-  );
+  )
 }
 
 export default Pedidos

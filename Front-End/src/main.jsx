@@ -24,6 +24,7 @@ import Mesas from "./components/mesas/Mesas.jsx";
 import Registrar_Mesa from "./components/mesas/Registrar_Mesa.jsx";
 import Editar_Mesa from "./components/mesas/Editar_Mesa.jsx";
 import Registrar_Reservas from "./components/reservas/Registrar_Reservas.jsx";
+import Registrar_Domicilios from "./components/pedidos/Registrar_Domicilios.jsx";
 
 
 
@@ -103,6 +104,11 @@ const router = createBrowserRouter([
   {
     path: "registrar_pedidos",
     element: <Registrar_Pedidos/>,
+  },
+
+  {
+    path: "registrar_domicilios",
+    element: <Registrar_Domicilios/>,
   },
 
   {

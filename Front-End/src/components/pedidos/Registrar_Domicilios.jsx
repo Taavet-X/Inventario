@@ -1,9 +1,8 @@
 import React from 'react'
-import "/src/components/pedidos/Registrar_Pedidos.css"
-import { Link } from 'react-router-dom'
 import Navbar from '../../navbar'
+import { Link } from 'react-router-dom'
 
-function Registrar_Pedidos() {
+function Registrar_Domicilios() {
   return (
     <Navbar>
     <div className="animate__animated animate__fadeIn animate"> 
@@ -12,8 +11,8 @@ function Registrar_Pedidos() {
     <header class="bg-dark py-5">
        <div class="container px-4 px-lg-5 my-5">
            <div class="text-center text-white">
-               <h1 class="display-4 fw-bolder">Registrar Pedido</h1>
-               <p class="lead fw-normal text-white-50 mb-0">Registra el Pedido Atráves del formulario</p>
+               <h1 class="display-4 fw-bolder">Registrar Domicilio</h1>
+               <p class="lead fw-normal text-white-50 mb-0">Registra el Domicilio Atráves del formulario</p>
            </div>
        </div>
    </header>
@@ -37,6 +36,17 @@ function Registrar_Pedidos() {
                        </div>
                    </div>
 
+                   <div class="form-group">
+                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                    <div class="col-md-8">
+                        <label htmlFor="unidadMedida">Tipo de Identificación</label>
+                        <select id="unidadMedida" name="Tipo de Identificación" class="form-control">
+                            
+                            <option value="unidades">Cedúla (C.C)</option>
+                            <option value="kg">Tarjeta De Identidad (T.I)</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
@@ -46,9 +56,23 @@ function Registrar_Pedidos() {
                        </div>
                    </div>
 
-                 
+                   <div class="form-group">
+                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                       <div class="col-md-8">
+                       <label htmlFor="name">Dirección (En caso de que el pedido sea para llevar)</label>
+                           <input id="lname" name="name" type="text" placeholder="Dirección" class="form-control"/>
+                           
+                       </div>
+                   </div>
 
-                
+                   <div class="form-group">
+                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                       <div class="col-md-8">
+                       <label htmlFor="name">Celular</label>
+                           <input id="email" name="email" type="text" placeholder="Celular" class="form-control"/>
+                       </div>
+                   </div>
+
                 
                    <div class="form-group">
                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -69,19 +93,8 @@ function Registrar_Pedidos() {
                    </div>
 
                    <div class="form-group">
-                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                       <div class="col-md-8">
-                       <label htmlFor="name">Número de la Mesa (En Caso De Que El Pedido Sea En El Restaurante)</label>
-                           <input id="lname" name="name" type="text" placeholder="Número de la Mesa" class="form-control"/>
-                           
-                       </div>
-                   </div>
-
-                   
-
-                   <div class="form-group">
                        <div class="col-md-12 text-center">
-                           <button type="submit" class="btn btn-primary btn-lg2">Registrar Pedido</button>
+                           <button type="submit" class="btn btn-primary btn-lg2">Registrar Domicilio</button>
                        </div>
                    </div>
                     
@@ -106,8 +119,8 @@ function Registrar_Pedidos() {
    </footer>
 
 </div>
-</Navbar>
-  );
+    </Navbar>
+  )
 }
 
-export default Registrar_Pedidos
+export default Registrar_Domicilios
