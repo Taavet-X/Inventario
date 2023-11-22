@@ -1,9 +1,12 @@
 import React from "react";
 import "./Registrar_Devoluciones.css";
 import { Link } from "react-router-dom";
+import Navbar from "../../navbar";
 
 function Registrar_Devoluciones() {
+  
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
       {/* <!-- Header--> */}
       <header className="bg-dark py-5">
@@ -84,10 +87,10 @@ function Registrar_Devoluciones() {
                     <div className="form-group">
                       <div className="col-md-12">
                         <input
-                          id="celularProveedor"
-                          name="celularProveedor"
+                          id="identifiacionProveedor"
+                          name="identificacionProveedor"
                           type="text"
-                          placeholder="Celular del Proveedor"
+                          placeholder="Identificación del Proveedor"
                           className="form-control"
                         />
                       </div>
@@ -163,6 +166,7 @@ function Registrar_Devoluciones() {
         </div>
       </footer>
     </div>
+    </Navbar>
   );
 }
 

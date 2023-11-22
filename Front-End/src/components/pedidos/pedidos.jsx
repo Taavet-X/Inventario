@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../../navbar'
 
 function Pedidos() {
+ 
   return (
+    <Navbar>
     <div  className="animate__animated animate__fadeIn animate">
         {/* <!-- Header--> */}
        <header className="bg-dark py-5">
@@ -33,7 +36,7 @@ function Pedidos() {
               </tr>
               <tr>
                 {/* <th>ID Del Proveedor</th> */}
-                <th>ID Del Pedido</th>
+                <th># Del Pedido</th>
                 <th>Nombre De La Persona Del Pedido</th>
                 <th>Dirección</th>
                 <th>Celular</th>
@@ -47,7 +50,11 @@ function Pedidos() {
               
           </table>
 
-          
+          <Link to="/registrar_pedidos">
+      <button type="button" className="btn btn-primary btn-lg d-flex justify-content-start">
+        Registrar Pedido
+      </button>{" "}
+    </Link>
 
           <Link to="/Menu">
             <button
@@ -72,7 +79,8 @@ function Pedidos() {
         </div>
       </footer>
     </div>
-  )
+    </Navbar>
+  );
 }
 
 export default Pedidos

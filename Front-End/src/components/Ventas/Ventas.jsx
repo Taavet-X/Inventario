@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Navbar from '../../navbar'
 
 function Ventas() {
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate">
            {/* <!-- Header--> */}
       <header class="bg-dark py-5">
@@ -68,6 +70,7 @@ function Ventas() {
         </div>
       </footer>
     </div>
+    </Navbar>
   )
 }
 

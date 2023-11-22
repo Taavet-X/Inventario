@@ -1,7 +1,10 @@
 import React from "react";
+import Navbar from "../../navbar";
+import { Link } from "react-router-dom";
 
 function Seccion_Devoluciones() {
   return (
+    <Navbar>
     <div>
       {/* <!-- Header--> */}
       <header class="bg-dark py-5">
@@ -15,44 +18,40 @@ function Seccion_Devoluciones() {
         </div>
       </header>
 
-      
+      <div className="container mt-5" style={{ marginTop: '30px' }}>
+  <div className="table table-responsive border-dark ">
+    <table className="table table-bordered table-hover text-center border border-4 ">
+      <thead className="table-light">
+        <tr>
+          <th colSpan="7">
+            <h2 className="text-start ">Registros De Devoluciones Generadas</h2>
+          </th>
+        </tr>
+        <tr>
+          <th>Tipo De Devolución</th>
+          <th>Observación De La Devolución</th>
+          <th>Identificación Del Proveedor</th>
+          <th>Nombre Del Proveedor</th>
+          <th>Fecha y Hora De La Devolución</th>
+          <th>Insumo(s) a Devolver</th>
+          <th>Cantidad de Insumo(s) a Devolver</th>
+        </tr>
+      </thead>
+      <tbody>
 
-      <div class="container">
-        <div class="table-wrapper">
-          <div class="table-title">
-            <div class="row">
-              <div class="col-sm-8">
-                <h2>Registros de Devoluciones Generados</h2>
-              </div>
-              <div class="col-sm-4"></div>
-            </div>
-          </div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Tipo de Devolución</th>
-                <th>Número del Insumo</th>
-                <th>Cantidad de Insumo(s) a devolver</th>
-                <th>Descripción del Insumo</th>
-                <th>Nombre del Proveedor</th>
-                <th>Celular del Proveedor</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  
+      </tbody>
+    </table>
 
+   
+
+    <Link to="/Menu">
+      <button type="submit" className="btn btn-primary btn-lg d-flex justify-content-start" style={{ marginTop: '30px' }}>
+        Ir Atrás
+      </button>{" "}
+    </Link>
+  </div>
+</div>
       {/* <!-- Footer--> */}
       <footer class="py-5 bg-dark">
         <div class="container">
@@ -62,6 +61,7 @@ function Seccion_Devoluciones() {
         </div>
       </footer>
     </div>
+    </Navbar>
   );
 }
 

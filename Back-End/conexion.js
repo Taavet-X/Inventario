@@ -26,6 +26,16 @@ app.use('/reservas_mesas', auth, reservas_mesasRouter)
 const loginRouter = require('./login')
 app.use('/login', loginRouter)
 
+const pedidosRouter = require('./pedidos')
+app.use('/pedidos', pedidosRouter)
+
+const devolucionesRouter = require('./devoluciones')
+app.use('/devoluciones', devolucionesRouter)
+
+const ventasRouter = require('./ventas')
+app.use('/ventas', ventasRouter)
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

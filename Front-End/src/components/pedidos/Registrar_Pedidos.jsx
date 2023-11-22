@@ -1,9 +1,11 @@
 import React from 'react'
 import "/src/components/pedidos/Registrar_Pedidos.css"
 import { Link } from 'react-router-dom'
+import Navbar from '../../navbar'
 
 function Registrar_Pedidos() {
   return (
+    <Navbar>
     <div className="animate__animated animate__fadeIn animate"> 
     
     {/* <!-- Header--> */}
@@ -129,7 +131,8 @@ function Registrar_Pedidos() {
    </footer>
 
 </div>
-  )
+</Navbar>
+  );
 }
 
 export default Registrar_Pedidos
