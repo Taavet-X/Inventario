@@ -19,7 +19,6 @@ function Reservas() {
   const handleClickEstado = (id_reservas_mesas, estadoActual) => {
     const estados = {
       'Pendiente': 'Pendiente',
-      'Realizado': 'Realizado',
       'Finalizada': 'Finalizada',
       'Cancelado': 'Cancelado',
     };

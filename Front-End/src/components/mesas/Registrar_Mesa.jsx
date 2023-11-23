@@ -21,7 +21,7 @@ function Registrar_Mesa() {
        
         .then((res) =>{
             Swal.fire({
-                title: 'Mesa Reservada Exitosamente',
+                title: 'Mesa Registrada Exitosamente',
                 icon: 'success',
         }).then((result) => {
             if (result.isConfirmed) {

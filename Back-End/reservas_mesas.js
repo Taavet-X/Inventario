@@ -7,9 +7,8 @@ const express = require("express")
 const router = express.Router()
 const mysql = require('mysql2');
 
-
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "localhost",  
   user: "root",
   password: "developer",
   database: "inventario_ohlala"
@@ -42,24 +41,24 @@ router.post('/', (req, res) => {
   // Muestra la hora actual más 2 horas
   con.connect(function(err) {
     if (err) throw err;
-    var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion  JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+    var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion  JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND estado LIKE '%Pendiente%' AND reserva.hora_reserva BETWEEN ? AND ? ;";   
     var values = [numero_mesa,horamenos.format('YYYY-MM-DD HH:mm:ss'),horaactual.format('YYYY-MM-DD HH:mm:ss')]
     console.log(values)
     con.query(sql, values, function (err, result) {            
       if (err) throw err;
         console.log(result)
         if(result.length > 0){
-          res.json("No Hay Disponibilidad")
+          res.json(0)
         }else{
           con.connect(function(err) {
             if (err) throw err;
-            var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND reserva.hora_reserva BETWEEN ? AND ? ;";   
+            var sql = "SELECT cliente.identificacion AS identificacion,mesa.id_mesa AS id_mesa, DATE_FORMAT(reserva.hora_reserva,'%Y-%m-%d %H:%i:%s') AS hora_reserva FROM reserva JOIN cliente ON cliente.identificacion = reserva.identificacion JOIN mesa ON mesa.id_mesa = reserva.id_mesa WHERE reserva.id_mesa = ? AND estado LIKE '%Pendiente%' AND reserva.hora_reserva BETWEEN ? AND ? ;";   
             var values = [numero_mesa,horaactual.format('YYYY-MM-DD HH:mm:ss'),horamas.format('YYYY-MM-DD HH:mm:ss')]
             con.query(sql, values, function (err, result) {
               if (err) throw err;
                 console.log(result)
                 if(result.length > 0){
-                  res.json("No Hay Disponibilidad")
+                  res.json(0)
                 }else{
                   con.connect(function(err) {
                     if (err) throw err;
@@ -71,7 +70,7 @@ router.post('/', (req, res) => {
                       if (err) throw err;
                       var sql = "INSERT INTO reserva (hora_reserva,id_mesa,estado,identificacion) VALUES (?);";
                       var values = [
-                      [hora_reserva,numero_mesa, 1 /* estado 1 es pendiente creado en la bd*/,identificacion]
+                      [hora_reserva,numero_mesa, 'Pendiente' /* estado 1 es pendiente creado en la bd*/,identificacion]
                     ]
                     con.query(sql, values, function (err, result) {
                       if (err) throw err;

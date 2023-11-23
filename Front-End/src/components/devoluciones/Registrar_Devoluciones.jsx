@@ -84,30 +84,7 @@ function Registrar_Devoluciones() {
                       </div>
                     </div>
 
-                    <div className="form-group">
-                      <div className="col-md-12">
-                        <input
-                          id="identifiacionProveedor"
-                          name="identificacionProveedor"
-                          type="text"
-                          placeholder="Identificación del Proveedor"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <div className="col-md-12">
-                        <input
-                          id="nombreProveedor"
-                          name="nombreProveedor"
-                          type="text"
-                          placeholder="Nombre del Proveedor"
-                          className="form-control"
-                        />
-                      </div>
-                    </div>
-
+                    
                     <div className="form-group">
                       <div className="col-md-12">
                         <textarea

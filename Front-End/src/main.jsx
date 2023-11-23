@@ -25,6 +25,9 @@ import Registrar_Mesa from "./components/mesas/Registrar_Mesa.jsx";
 import Editar_Mesa from "./components/mesas/Editar_Mesa.jsx";
 import Registrar_Reservas from "./components/reservas/Registrar_Reservas.jsx";
 import Registrar_Domicilios from "./components/pedidos/Registrar_Domicilios.jsx";
+import Inventario from "./components/inventario/Inventario.jsx";
+import Registrar_Datos_Inventario from "./components/inventario/Registrar_Datos_Inventario.jsx";
+import Editar_Inventario from "./components/inventario/Editar_Inventario.jsx";
 
 
 
@@ -140,7 +143,22 @@ const router = createBrowserRouter([
     path: "registrar_reservas",
     element: <Registrar_Reservas/>,
   },
+
+  {
+    path: "inventario",
+    element: <Inventario/>,
+  },
+
+  {
+    path: "registrar_datos_inventario",
+    element: <Registrar_Datos_Inventario/>,
+  },
   
+  {
+    path: "editar_inventario",
+    element: <Editar_Inventario/>,
+  },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

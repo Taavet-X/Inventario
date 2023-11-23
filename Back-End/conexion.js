@@ -35,6 +35,9 @@ app.use('/devoluciones', devolucionesRouter)
 const ventasRouter = require('./ventas')
 app.use('/ventas', ventasRouter)
 
+const inventarioRouter = require('./inventario')
+app.use('/inventario', auth, inventarioRouter)
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

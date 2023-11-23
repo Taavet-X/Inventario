@@ -44,14 +44,27 @@ function Registrar_Reservas() {
         postReservaMesas(Reserva_Mesas)
        
         .then((res) =>{
-            Swal.fire({
-                title: 'Mesa Reservada Exitosamente',
-                icon: 'success',
-        }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = '/reservas';
+            if (res == 0) {
+                Swal.fire({
+                    title: 'No Hay Disponibilidad',
+                    icon: 'error',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = '/registrar_reservas';
+                }
+            });
+            }else {
+                
+                Swal.fire({
+                    title: 'Reserva Exitosamente',
+                    icon: 'success',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = '/reservas';
+                }
+            });
             }
-        });
+           
     });
     }
 
